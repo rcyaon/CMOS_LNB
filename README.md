@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright 2026 Charlie Sands & Lena Arujo Conde
+Copyright 2026 Charlie Sands & Lena Conde Araujo
 
 ## Overview
 
