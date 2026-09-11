@@ -1,4 +1,4 @@
-# GF180MCU L-Band Downconverter
+# GF180MCU L-Band LNB
 
 MIT License
 
