@@ -1,6 +1,6 @@
 <Qucs Schematic 26.1.1>
 <Properties>
-  <View=-7492,-288,5979,986,0.691765,5847,0>
+  <View=-7492,-1057,5979,1506,0.571707,4320,456>
   <Grid=10,10,1>
   <DataSet=System.dat>
   <DataDisplay=System.dpl>
@@ -181,7 +181,7 @@
 	<"ngspice/v(rf_pos)" #0000ff 0 3 1 0 0>
 	<"ngspice/v(amp_bias_dc)" #0000ff 0 3 0 0 0>
   </Tab>
-  <Rect 600 1350 995 546 3 #c0c0c0 1 00 1 0 2e+08 3e+09 1 -0.00102285 0.002 0.001 1 -1 0.2 1 315 0 225 1 0 0 "" "" "">
+  <Rect 2050 -310 995 546 3 #c0c0c0 1 00 1 0 2e+08 3e+09 1 -0.00102285 0.002 0.001 1 -1 0.2 1 315 0 225 1 0 0 "" "" "">
 	<"ngspice/ac.v(input)" #0000ff 1 3 0 0 0>
 	<"ngspice/ac.v(if_pos)" #ff0000 1 3 0 0 0>
   </Rect>
