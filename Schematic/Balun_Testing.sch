@@ -1,6 +1,6 @@
 <Qucs Schematic 26.1.1>
 <Properties>
-  <View=-2246,-445,4904,608,0.837036,2198,0>
+  <View=-2246,-301,4904,752,0.837036,2198,0>
   <Grid=10,10,1>
   <DataSet=Balun_Testing.dat>
   <DataDisplay=Balun_Testing.dpl>
@@ -33,10 +33,10 @@
   <Vdc V3 1 1040 -130 18 -26 0 1 "5 V" 1>
   <Vac V1 1 640 260 18 -26 0 1 "1 mV" 1 "1.7 GHz" 0 "0" 0 "0" 0 "0" 0 "0" 0>
   <GND * 1 870 310 0 0 0 0>
-  <Sub SUB5 1 1150 170 -26 138 0 0 "DiffPairBalun.sch" 0>
   <C C3 1 640 180 -76 -26 0 3 "1 pF" 1 "" 0 "neutral" 0>
   <Vdc V2 1 750 260 18 -26 0 1 "1.9 V" 1>
   <Vdc V4 1 870 260 18 -26 0 1 "1.9 V" 1>
+  <Sub SUB5 1 1150 170 -26 138 0 0 "DiffPairBalun.sch" 0>
 </Components>
 <Wires>
   <1610 160 1610 180 "" 0 0 0 "">

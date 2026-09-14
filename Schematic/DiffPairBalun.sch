@@ -1,6 +1,6 @@
 <Qucs Schematic 26.1.1>
 <Properties>
-  <View=-450,-230,1617,926,0.762408,0,0>
+  <View=-673,-255,1828,1143,0.762408,226,66>
   <Grid=10,10,1>
   <DataSet=DiffPairBalun.dat>
   <DataDisplay=DiffPairBalun.dpl>
