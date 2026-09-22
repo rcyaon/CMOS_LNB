@@ -1,0 +1,7 @@
+* ringosci -- regenerated from ringosci.sch (see sch2spice.py)
+.subckt ringosci vdd lo cw=4.5u
+XC1 lo 0 cap_mim_2f0fF c_width=cw c_length=cw m=1
+x1 net1 vdd lo inv
+x2 net2 vdd net1 inv
+x3 lo vdd net2 inv
+.ends ringosci

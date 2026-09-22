@@ -1,0 +1,11 @@
+* inv -- regenerated from inv.sch (see sch2spice.py)
+.subckt inv out vdd in wn=1u wp=3u
+XM1 out in 0 0 nfet_03v3 L=0.28u W=wn nf=1 m=1
++ ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u'
++ pd='2*int((nf+1)/2) * (W/nf + 0.18u)' ps='2*int((nf+2)/2) * (W/nf + 0.18u)'
++ nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM2 out in vdd vdd pfet_03v3 L=0.28u W=wp nf=1 m=1
++ ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u'
++ pd='2*int((nf+1)/2) * (W/nf + 0.18u)' ps='2*int((nf+2)/2) * (W/nf + 0.18u)'
++ nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+.ends inv

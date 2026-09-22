@@ -1,0 +1,98 @@
+#
+# Project-local xschemrc for bias-other (beta multiplier, voltage reference,
+# ring-oscillator stage, LNA stage + input match).  GF180MCU, ngspice.
+#
+# Launch xschem from this directory, or with -rcfile pointing here, so this file
+# is picked up instead of ~/.xschem/xschemrc.
+#
+# NOTE ON THE SYMBOL LIBRARY
+# --------------------------
+# The device symbols this project uses live in ./sym and are self-contained.
+# They are NOT the PDK's xschem symbols, and nothing here depends on the PDK
+# shipping an xschem view of a device at all -- which matters, because the 6 V
+# devices are not reliably there to be found in the PDK's symbol library.
+#
+#     sym/nfet_06v0.sym  ->  XM1 ng ng 0 0 nfet_06v0 W=20u L=2u
+#
+# nfet_06v0 is the subcircuit name in the foundry's own ngspice model library
+# (sm141064.ngspice), which is what the decks call and therefore what these
+# symbols emit.  The decks are the source of truth (see ../gen_xschem.py) --
+# the schematics are generated from them and must netlist back to them
+# character for character.
+#
+# The consequence is that these schematics open and netlist correctly with no
+# PDK installed at all.  The PDK is sourced below only for the extras -- netlist
+# format defaults and the tech menus -- and its absence is a warning, not an
+# error.  Simulating, of course, still needs the model library:
+#
+#     .lib $PDK_ROOT/$PDK/libs.tech/ngspice/sm141064.ngspice typical
+#
+# and for the MIM caps also the cap_mim section of the same file.
+#
+
+# ---------------------------------------------------------------- PDK_ROOT --
+# Honour the environment first; only guess if it is unset.  Absolute PDK paths
+# are not portable between machines and containers, so nothing here hardcodes
+# one outside this block.
+if { ![info exists env(PDK_ROOT)] || $env(PDK_ROOT) eq "" } {
+    foreach candidate [list \
+            /foss/pdks \
+            /usr/share/pdk \
+            /usr/local/share/pdk \
+            $env(HOME)/share/pdk \
+            $env(HOME)/.ciel \
+            $env(HOME)/.volare ] {
+        if { [llength [glob -nocomplain -directory $candidate gf180mcu*]] } {
+            set ::env(PDK_ROOT) $candidate
+            break
+        }
+    }
+}
+
+# --------------------------------------------------------------------- PDK --
+# open_pdks ships gf180mcuA/B/C/D; D is the variant the IIC-OSIC-TOOLS image
+# installs.  Take the highest-lettered one present unless PDK says otherwise.
+if { ![info exists env(PDK)] || $env(PDK) eq "" } {
+    set ::env(PDK) gf180mcuD
+    if { [info exists env(PDK_ROOT)] } {
+        set found [lsort [glob -nocomplain -tails -directory $env(PDK_ROOT) gf180mcu?]]
+        if { [llength $found] } { set ::env(PDK) [lindex $found end] }
+    }
+}
+
+# ------------------------------------------------- source the PDK xschemrc --
+# Best effort only -- see the note at the top.  Everything below only appends.
+if { [info exists env(PDK_ROOT)] } {
+    set pdk_xschemrc $env(PDK_ROOT)/$env(PDK)/libs.tech/xschem/xschemrc
+    if { [file exists $pdk_xschemrc] } {
+        source $pdk_xschemrc
+    } else {
+        puts stderr "xschemrc: $pdk_xschemrc not found."
+        puts stderr "          Project symbols still work; PDK menus/defaults will not."
+    }
+} else {
+    puts stderr "xschemrc: no gf180mcu install found under the usual prefixes."
+    puts stderr "          Set PDK_ROOT (and PDK) if you want the PDK extras."
+}
+
+# --------------------------------------------------- project library paths --
+# Resolved from this file's own location, so they are correct no matter which
+# directory xschem was started from.
+set project_xschem_dir [file dirname [file normalize [info script]]]
+
+# Schematics reference their devices as sym/<model>.sym, so the directory
+# holding sym/ is what goes on the path -- not sym/ itself.
+append XSCHEM_LIBRARY_PATH :$project_xschem_dir
+
+# devices/iopin.sym, devices/lab_pin.sym, devices/{capa,ind,res}.sym come from
+# xschem's own installed library, which is already on the path.
+
+# ------------------------------------------------------------- conveniences --
+# Netlists go to their own directory.  The hand-written decks in ../tb, ../lna
+# and ../vref_core.inc are inputs to this project, not outputs of xschem, and
+# nothing xschem writes should land next to them.
+set netlist_dir [file normalize $project_xschem_dir/netlist]
+if { ![file isdirectory $netlist_dir] } { file mkdir $netlist_dir }
+
+# Ground is the SPICE global node 0 in the decks, and the generated schematics
+# label it 0 for that reason.  No .GLOBAL is needed or wanted.
