@@ -5,7 +5,6 @@ V {}
 S {}
 F {}
 E {}
-T {.param l1=34.26u l2=64.23u l3=49.31u} 0 -60 0 0 0.22 0.22 {}
 N 100 180 100 220 {lab=#net1}
 N 140 140 180 140 {lab=pg}
 N 100 60 100 100 {lab=vdd}
@@ -16,7 +15,7 @@ N 120 530 160 530 {lab=gnd}
 N 40 300 80 300 {lab=gnd}
 N 200 510 200 550 {lab=gnd}
 N 200 490 200 510 {lab=gnd}
-N 180 720 180 750 {lab=gnd}
+N 180 740 180 750 {lab=gnd}
 N 120 700 130 700 {lab=gnd}
 N 130 700 130 750 {lab=gnd}
 N 100 750 130 750 {lab=gnd}
@@ -38,18 +37,15 @@ N 100 360 100 370 {lab=#net2}
 N 100 370 100 460 {lab=#net2}
 N 100 370 120 370 {lab=#net2}
 N 100 230 120 230 {lab=#net1}
-N 200 330 200 350 {lab=gnd}
 N 280 390 330 390 {lab=pg}
 N 280 410 330 410 {lab=vdd}
 N 200 430 330 430 {lab=o20}
 N 280 250 330 250 {lab=pg}
 N 280 270 330 270 {lab=vdd}
 N 200 290 330 290 {lab=o30}
-N 200 270 200 290 {lab=o30}
 N 280 640 330 640 {lab=pg}
 N 280 660 330 660 {lab=vdd}
 N 180 680 330 680 {lab=o07}
-N 180 660 180 680 {lab=o07}
 C {devices/iopin.sym} 0 0 0 0 {name=p1 lab=vdd}
 C {devices/iopin.sym} 160 0 0 0 {name=p2 lab=pg}
 C {devices/iopin.sym} 320 0 0 0 {name=p3 lab=o07}
@@ -60,9 +56,9 @@ C {devices/lab_pin.sym} 100 60 0 0 {name=lXMP4_2 lab=vdd}
 C {devices/lab_pin.sym} 100 790 2 0 {name=lXRA_1 lab=gnd}
 C {devices/lab_pin.sym} 160 530 1 0 {name=lXRB_2 lab=gnd}
 C {devices/lab_pin.sym} 40 300 3 0 {name=lXRC_2 lab=gnd}
-C {devices/lab_pin.sym} 250 680 0 0 {name=lXD1_0 lab=o07}
+C {lab_wire.sym} 250 680 0 0 {name=p21 sig_type=std_logic lab=o07}
 C {devices/lab_pin.sym} 200 550 2 0 {name=lXD2_1 lab=gnd}
-C {devices/lab_pin.sym} 250 290 0 0 {name=lXD3_0 lab=o30}
+C {lab_wire.sym} 250 290 0 0 {name=p22 sig_type=std_logic lab=o30}
 C {xschem/ota5.sym} 480 400 2 0 {name=x1}
 C {gf180mcu_fd_pr/cap_mim_2f0fF.sym} 200 460 0 0 {name=C1
 W=22u
@@ -70,7 +66,7 @@ L=22u
 model=cap_mim_2f0fF
 spiceprefix=X
 m=1}
-C {gf180mcu_fd_pr/cap_mim_2f0fF.sym} 180 690 0 0 {name=C3
+C {gf180mcu_fd_pr/cap_mim_2f0fF.sym} 180 710 0 0 {name=C3
 W=22u
 L=22u
 model=cap_mim_2f0fF
@@ -118,7 +114,7 @@ C {lab_wire.sym} 280 270 0 0 {name=p13 sig_type=std_logic lab=vdd}
 C {xschem/ota5.sym} 480 650 2 0 {name=x5}
 C {lab_wire.sym} 280 640 0 0 {name=p16 sig_type=std_logic lab=pg}
 C {lab_wire.sym} 280 660 0 0 {name=p17 sig_type=std_logic lab=vdd}
-C {gf180mcu_fd_pr/cap_mim_2f0fF.sym} 200 300 0 0 {name=C4
+C {gf180mcu_fd_pr/cap_mim_2f0fF.sym} 200 320 0 0 {name=C4
 W=22u
 L=22u
 model=cap_mim_2f0fF
@@ -126,3 +122,5 @@ spiceprefix=X
 m=1}
 C {devices/lab_pin.sym} 200 350 2 0 {name=lXD1 lab=gnd}
 C {devices/lab_pin.sym} 180 750 2 0 {name=lXRA_2 lab=gnd}
+C {devices/code_shown.sym} 0 -60 0 0 {name=PARAMS only_toplevel=false
+value=".param l1=34.26u l2=64.23u l3=49.31u"}

@@ -1,35 +1,19 @@
 #
-# Project-local xschemrc for bias-other (beta multiplier, voltage reference,
-# ring-oscillator stage, LNA stage + input match).  GF180MCU, ngspice.
+# Project-local xschemrc for bias-other: beta_mult (constant-gm bias), vref
+# (0.7 / 2.0 / 3.0 V taps, 3 x ota5 followers) and ringosci (3 x inv).
+# GF180MCU-D, ngspice.
 #
-# Launch xschem from this directory, or with -rcfile pointing here, so this file
-# is picked up instead of ~/.xschem/xschemrc.
+# Launch xschem with -rcfile pointing here (the scripts in spice/ do), so this
+# file is picked up instead of ~/.xschem/xschemrc.
 #
-# NOTE ON THE SYMBOL LIBRARY
-# --------------------------
-# The device symbols this project uses live in ./sym and are self-contained.
-# They are NOT the PDK's xschem symbols, and nothing here depends on the PDK
-# shipping an xschem view of a device at all -- which matters, because the 6 V
-# devices are not reliably there to be found in the PDK's symbol library.
+# The schematics in this directory are the source of truth.  Devices come from
+# the PDK's own xschem symbols (gf180mcu_fd_pr/*.sym), so the PDK must be
+# installed -- it is inside the IIC-OSIC-TOOLS container (/foss/pdks).  Cell
+# symbols (inv, ota5, beta_mult, vref, ringosci) live next to their .sch here.
+# Simulation also needs the model library, which the testbenches pull in via
 #
-#     sym/nfet_06v0.sym  ->  XM1 ng ng 0 0 nfet_06v0 W=20u L=2u
+#     .lib $::180MCU_MODELS/sm141064.ngspice typical
 #
-# nfet_06v0 is the subcircuit name in the foundry's own ngspice model library
-# (sm141064.ngspice), which is what the decks call and therefore what these
-# symbols emit.  The decks are the source of truth (see ../gen_xschem.py) --
-# the schematics are generated from them and must netlist back to them
-# character for character.
-#
-# The consequence is that these schematics open and netlist correctly with no
-# PDK installed at all.  The PDK is sourced below only for the extras -- netlist
-# format defaults and the tech menus -- and its absence is a warning, not an
-# error.  Simulating, of course, still needs the model library:
-#
-#     .lib $PDK_ROOT/$PDK/libs.tech/ngspice/sm141064.ngspice typical
-#
-# and for the MIM caps also the cap_mim section of the same file.
-#
-
 # ---------------------------------------------------------------- PDK_ROOT --
 # Honour the environment first; only guess if it is unset.  Absolute PDK paths
 # are not portable between machines and containers, so nothing here hardcodes
@@ -83,6 +67,9 @@ set project_xschem_dir [file dirname [file normalize [info script]]]
 # Schematics reference their devices as sym/<model>.sym, so the directory
 # holding sym/ is what goes on the path -- not sym/ itself.
 append XSCHEM_LIBRARY_PATH :$project_xschem_dir
+# project root too, so the 'xschem/<cell>.sym' references in the .sch files
+# resolve no matter which directory xschem is started from
+append XSCHEM_LIBRARY_PATH :[file dirname $project_xschem_dir]
 
 # devices/iopin.sym, devices/lab_pin.sym, devices/{capa,ind,res}.sym come from
 # xschem's own installed library, which is already on the path.
@@ -91,7 +78,9 @@ append XSCHEM_LIBRARY_PATH :$project_xschem_dir
 # Netlists go to their own directory.  The hand-written decks in ../tb, ../lna
 # and ../vref_core.inc are inputs to this project, not outputs of xschem, and
 # nothing xschem writes should land next to them.
-set netlist_dir [file normalize $project_xschem_dir/netlist]
+# netlists + raw files go where the testbench scripts put them, so the tb
+# launchers (xschem raw_read $netlist_dir/tb_*.raw) find their results
+set netlist_dir [file normalize [file dirname $project_xschem_dir]/sims/xschem]
 if { ![file isdirectory $netlist_dir] } { file mkdir $netlist_dir }
 
 # Ground is the SPICE global node 0 in the decks, and the generated schematics

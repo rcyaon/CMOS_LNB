@@ -1,0 +1,46 @@
+** sch_path: /foss/designs/Designs/bias-other/xschem/vref.sch
+**.subckt vref vdd pg o07 o20 o30
+*.iopin vdd
+*.iopin pg
+*.iopin o07
+*.iopin o20
+*.iopin o30
+x1 o20 vdd pg net2 ota5
+XC1 o20 gnd cap_mim_2f0fF c_width=22u c_length=22u
+XC3 o07 gnd cap_mim_2f0fF c_width=22u c_length=22u
+XR1 net3 gnd gnd ppolyf_u_1k r_width=1e-6 r_length=l1
+XR2 net2 net3 gnd ppolyf_u_1k r_width=1e-6 r_length=l2
+XR3 net2 net1 gnd ppolyf_u_1k r_width=1e-6 r_length=l3
+XM1 vdd pg net1 VDD pfet_06v0 L=2u W=40u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+x4 o30 vdd pg net1 ota5
+x5 o07 vdd pg net3 ota5
+XC4 o30 gnd cap_mim_2f0fF c_width=22u c_length=22u
+**** begin user architecture code
+
+.param l1=34.26u l2=64.23u l3=49.31u
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  xschem/ota5.sym # of pins=4
+** sym_path: /foss/designs/Designs/bias-other/xschem/ota5.sym
+** sch_path: /foss/designs/Designs/bias-other/xschem/ota5.sch
+.subckt ota5 out vdd pg inp
+*.iopin inp
+*.iopin out
+*.iopin vdd
+*.iopin pg
+XM1 net2 inp net1 VDD pfet_06v0 L=2u W=40u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM2 out net2 gnd GND nfet_06v0 L=2u W=20u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM3 net1 pg vdd VDD pfet_06v0 L=2u W=40u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM4 net1 out out VDD pfet_06v0 L=2u W=40u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM5 gnd net2 net2 GND nfet_06v0 L=2u W=20u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+.ends
+
+.end

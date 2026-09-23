@@ -1,0 +1,23 @@
+* vref -- flattened for sch-area-estimator (sizes in um)
+X0 x1.XM1 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X1 x1.XM2 gf180mcu_fd_pr__nfet_06v0 w=20 l=2 nf=1 m=1
+X2 x1.XM3 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X3 x1.XM4 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X4 x1.XM5 gf180mcu_fd_pr__nfet_06v0 w=20 l=2 nf=1 m=1
+X5 XC1 gf180mcu_fd_pr__cap_mim_2f0ff w=22 l=22 nf=1 m=1
+X6 XC3 gf180mcu_fd_pr__cap_mim_2f0ff w=22 l=22 nf=1 m=1
+X7 XR1 gf180mcu_fd_pr__ppolyf_u_1k w=1 l=34.26 nf=1 m=1
+X8 XR2 gf180mcu_fd_pr__ppolyf_u_1k w=1 l=64.23 nf=1 m=1
+X9 XR3 gf180mcu_fd_pr__ppolyf_u_1k w=1 l=49.31 nf=1 m=1
+X10 XM1 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X11 x4.XM1 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X12 x4.XM2 gf180mcu_fd_pr__nfet_06v0 w=20 l=2 nf=1 m=1
+X13 x4.XM3 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X14 x4.XM4 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X15 x4.XM5 gf180mcu_fd_pr__nfet_06v0 w=20 l=2 nf=1 m=1
+X16 x5.XM1 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X17 x5.XM2 gf180mcu_fd_pr__nfet_06v0 w=20 l=2 nf=1 m=1
+X18 x5.XM3 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X19 x5.XM4 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X20 x5.XM5 gf180mcu_fd_pr__nfet_06v0 w=20 l=2 nf=1 m=1
+X21 XC4 gf180mcu_fd_pr__cap_mim_2f0ff w=22 l=22 nf=1 m=1

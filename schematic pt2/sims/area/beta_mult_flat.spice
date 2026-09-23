@@ -1,0 +1,12 @@
+* beta_mult -- flattened for sch-area-estimator (sizes in um)
+X0 XC1 gf180mcu_fd_pr__cap_mim_2f0ff w=22 l=22 nf=1 m=1
+X1 XR1 gf180mcu_fd_pr__ppolyf_u_1k w=2 l=2.7 nf=1 m=1
+X2 XM1 gf180mcu_fd_pr__nfet_06v0 w=20 l=2 nf=1 m=1
+X3 XM2 gf180mcu_fd_pr__nfet_06v0 w=10 l=1 nf=1 m=1
+X4 XM3 gf180mcu_fd_pr__nfet_06v0 w=2 l=1 nf=1 m=1
+X5 XM5 gf180mcu_fd_pr__pfet_06v0 w=0.5 l=50 nf=1 m=1
+X6 XM6 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X7 XC2 gf180mcu_fd_pr__cap_mim_2f0ff w=22 l=22 nf=1 m=1
+X8 XM7 gf180mcu_fd_pr__nfet_06v0 w=80 l=2 nf=1 m=1
+X9 XM4 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X10 XR2 gf180mcu_fd_pr__nwell w=2 l=4.07 nf=1 m=1

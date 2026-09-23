@@ -1,0 +1,42 @@
+========================================================================
+ GF180MCU Pre-Layout Area Estimator
+ Netlist : /Users/lenacondearaujo/open-source/Designs/bias-other/sims/area/vref_flat.spice
+ DB      : /Users/lenacondearaujo/open-source/Designs/bias-other/spice/area/device_db_gf180mcuD.json
+========================================================================
+ Device                                 Params               Area (um2)
+ -------------------------------------- -------------------- ----------
+ cap_mim_2f0ff                          w=22.0 l=22.0           595.360
+ cap_mim_2f0ff                          w=22.0 l=22.0           595.360
+ cap_mim_2f0ff                          w=22.0 l=22.0           595.360
+                               subtotal                        1786.080
+ nfet_06v0                              w=20.0 l=2.0 nf=1       104.678
+ nfet_06v0                              w=20.0 l=2.0 nf=1       104.678
+ nfet_06v0                              w=20.0 l=2.0 nf=1       104.678
+ nfet_06v0                              w=20.0 l=2.0 nf=1       104.678
+ nfet_06v0                              w=20.0 l=2.0 nf=1       104.678
+ nfet_06v0                              w=20.0 l=2.0 nf=1       104.678
+                               subtotal                         628.070
+ pfet_06v0                              w=40.0 l=2.0 nf=1       197.478
+ pfet_06v0                              w=40.0 l=2.0 nf=1       197.478
+ pfet_06v0                              w=40.0 l=2.0 nf=1       197.478
+ pfet_06v0                              w=40.0 l=2.0 nf=1       197.478
+ pfet_06v0                              w=40.0 l=2.0 nf=1       197.478
+ pfet_06v0                              w=40.0 l=2.0 nf=1       197.478
+ pfet_06v0                              w=40.0 l=2.0 nf=1       197.478
+ pfet_06v0                              w=40.0 l=2.0 nf=1       197.478
+ pfet_06v0                              w=40.0 l=2.0 nf=1       197.478
+ pfet_06v0                              w=40.0 l=2.0 nf=1       197.478
+                               subtotal                        1974.784
+ ppolyf_u_1k                            l=34.26 w=1.0           127.142
+ ppolyf_u_1k                            l=64.23 w=1.0           227.842
+ ppolyf_u_1k                            l=49.31 w=1.0           177.710
+                               subtotal                         532.694
+ -------------------------------------- -------------------- ----------
+ Devices subtotal                                               4921.63
+ Routing overhead (x1.3)                                        1476.49
+ -------------------------------------- -------------------- ----------
+ TOTAL ESTIMATED AREA                                           6398.12
+ Equivalent square side                                           79.99
+========================================================================
+ Parsed 22 instances, costed 22, skipped 0
+========================================================================

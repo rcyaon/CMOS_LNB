@@ -1,0 +1,67 @@
+{
+  "inv": {
+    "netlist": "/Users/lenacondearaujo/open-source/Designs/bias-other/sims/area/inv_flat.spice",
+    "db": "/Users/lenacondearaujo/open-source/Designs/bias-other/spice/area/device_db_gf180mcuD.json",
+    "instances_parsed": 2,
+    "instances_costed": 2,
+    "instances_unknown": 0,
+    "device_area_um2": 39.35,
+    "routing_overhead": 1.3,
+    "routing_area_um2": 11.8,
+    "total_area_um2": 51.15,
+    "equiv_side_um": 7.15,
+    "unknown": []
+  },
+  "ringosci": {
+    "netlist": "/Users/lenacondearaujo/open-source/Designs/bias-other/sims/area/ringosci_flat.spice",
+    "db": "/Users/lenacondearaujo/open-source/Designs/bias-other/spice/area/device_db_gf180mcuD.json",
+    "instances_parsed": 6,
+    "instances_costed": 6,
+    "instances_unknown": 0,
+    "device_area_um2": 118.04,
+    "routing_overhead": 1.3,
+    "routing_area_um2": 35.41,
+    "total_area_um2": 153.45,
+    "equiv_side_um": 12.39,
+    "unknown": []
+  },
+  "ota5": {
+    "netlist": "/Users/lenacondearaujo/open-source/Designs/bias-other/sims/area/ota5_flat.spice",
+    "db": "/Users/lenacondearaujo/open-source/Designs/bias-other/spice/area/device_db_gf180mcuD.json",
+    "instances_parsed": 5,
+    "instances_costed": 5,
+    "instances_unknown": 0,
+    "device_area_um2": 801.79,
+    "routing_overhead": 1.3,
+    "routing_area_um2": 240.54,
+    "total_area_um2": 1042.33,
+    "equiv_side_um": 32.29,
+    "unknown": []
+  },
+  "vref": {
+    "netlist": "/Users/lenacondearaujo/open-source/Designs/bias-other/sims/area/vref_flat.spice",
+    "db": "/Users/lenacondearaujo/open-source/Designs/bias-other/spice/area/device_db_gf180mcuD.json",
+    "instances_parsed": 22,
+    "instances_costed": 22,
+    "instances_unknown": 0,
+    "device_area_um2": 4921.63,
+    "routing_overhead": 1.3,
+    "routing_area_um2": 1476.49,
+    "total_area_um2": 6398.12,
+    "equiv_side_um": 79.99,
+    "unknown": []
+  },
+  "beta_mult": {
+    "netlist": "/Users/lenacondearaujo/open-source/Designs/bias-other/sims/area/beta_mult_flat.spice",
+    "db": "/Users/lenacondearaujo/open-source/Designs/bias-other/spice/area/device_db_gf180mcuD.json",
+    "instances_parsed": 11,
+    "instances_costed": 11,
+    "instances_unknown": 0,
+    "device_area_um2": 2357.4,
+    "routing_overhead": 1.3,
+    "routing_area_um2": 707.22,
+    "total_area_um2": 3064.62,
+    "equiv_side_um": 55.36,
+    "unknown": []
+  }
+}

@@ -1,0 +1,18 @@
+========================================================================
+ GF180MCU Pre-Layout Area Estimator
+ Netlist : /Users/lenacondearaujo/open-source/Designs/bias-other/sims/area/inv_flat.spice
+ DB      : /Users/lenacondearaujo/open-source/Designs/bias-other/spice/area/device_db_gf180mcuD.json
+========================================================================
+ Device                                 Params               Area (um2)
+ -------------------------------------- -------------------- ----------
+ nfet_06v0                              w=2.0 l=0.7 nf=1         15.230
+ pfet_06v0                              w=5.0 l=0.55 nf=1        24.116
+ -------------------------------------- -------------------- ----------
+ Devices subtotal                                                 39.35
+ Routing overhead (x1.3)                                          11.80
+ -------------------------------------- -------------------- ----------
+ TOTAL ESTIMATED AREA                                             51.15
+ Equivalent square side                                            7.15
+========================================================================
+ Parsed 2 instances, costed 2, skipped 0
+========================================================================

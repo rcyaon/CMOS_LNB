@@ -1,0 +1,28 @@
+** sch_path: /foss/designs/Designs/bias-other/xschem/ringosci.sch
+**.subckt ringosci vdd lo
+*.ipin vdd
+*.opin lo
+x1 net1 vdd lo inv
+x2 net2 vdd net1 inv
+x3 lo vdd net2 inv
+**.ends
+
+* expanding   symbol:  xschem/inv.sym # of pins=3
+** sym_path: /foss/designs/Designs/bias-other/xschem/inv.sym
+** sch_path: /foss/designs/Designs/bias-other/xschem/inv.sch
+.subckt inv out vdd in
+*.opin out
+*.ipin vdd
+*.ipin in
+XM1 out in gnd GND nfet_06v0 L=0.70u W=wn nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM2 out in vdd VDD pfet_06v0 L=0.55u W=wp nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+**** begin user architecture code
+
+.param wn=2u wp=5u
+
+**** end user architecture code
+.ends
+
+.end

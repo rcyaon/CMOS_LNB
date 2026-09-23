@@ -5,11 +5,10 @@ V {}
 S {}
 F {}
 E {}
-T {.param rs_l=8.5u} -10 -490 0 0 0.22 0.22 {}
-N 220 -70 220 -30 {lab=gnd}
-N 580 -90 580 -50 {lab=gnd}
-N 560 -50 580 -50 {lab=gnd}
-N 560 -60 560 -50 {lab=gnd}
+T {Rs = R1 (ppolyf_u_1k, TC -939 ppm/C) + R2 (nwell, TC +2285 ppm/C) in series.
+The mix cancels the mobility drift of Iref*R so the vref taps are near zero-TC.} -10 -560 0 0 0.2 0.2 {}
+N 220 -70 220 30 {lab=gnd}
+N 560 -60 560 -30 {lab=nr}
 N 220 -90 220 -70 {lab=gnd}
 N 220 -170 220 -150 {lab=ng}
 N 60 -300 100 -300 {lab=gnd}
@@ -20,16 +19,15 @@ N 140 -270 140 -210 {lab=s1}
 N 100 -240 140 -240 {lab=s1}
 N 180 -180 220 -180 {lab=ng}
 N 220 -180 220 -170 {lab=ng}
-N 140 -150 140 -30 {lab=gnd}
-N 230 -30 450 -30 {lab=gnd}
-N 210 -30 230 -30 {lab=gnd}
-N 450 -30 450 -0 {lab=gnd}
+N 140 -150 140 30 {lab=gnd}
+N 230 30 450 30 {lab=gnd}
+N 210 30 230 30 {lab=gnd}
+N 450 30 450 60 {lab=gnd}
 N 560 -140 560 -120 {lab=ns}
 N 420 -170 520 -170 {lab=ng}
 N 500 -130 560 -130 {lab=ns}
-N 560 -50 560 -30 {lab=gnd}
-N 380 -140 380 -30 {lab=gnd}
-N 140 -30 210 -30 {lab=gnd}
+N 380 -140 380 30 {lab=gnd}
+N 140 30 210 30 {lab=gnd}
 N 220 -220 220 -180 {lab=ng}
 N 220 -220 380 -220 {lab=ng}
 N 380 -220 380 -200 {lab=ng}
@@ -46,8 +44,10 @@ N 560 -280 560 -200 {lab=pg}
 N 560 -260 720 -260 {lab=pg}
 N 760 -220 790 -220 {lab=kg}
 N 720 -260 790 -260 {lab=pg}
-N 720 -190 720 -30 {lab=gnd}
-N 450 -30 720 -30 {lab=gnd}
+N 720 -190 720 30 {lab=gnd}
+N 450 30 560 30 {lab=gnd}
+N 560 30 600 30 {lab=gnd}
+N 600 30 720 30 {lab=gnd}
 N 880 -190 880 -170 {lab=cpret}
 N 560 -270 880 -270 {lab=pg}
 N 880 -270 880 -250 {lab=pg}
@@ -59,7 +59,7 @@ C {devices/iopin.sym} 470 -430 0 0 {name=p4 lab=ns}
 C {devices/iopin.sym} 630 -430 0 0 {name=p5 lab=cpret}
 C {devices/iopin.sym} 790 -430 0 0 {name=p6 lab=s1}
 C {devices/iopin.sym} 950 -430 0 0 {name=p7 lab=kg}
-C {devices/lab_pin.sym} 450 0 2 0 {name=lXRS_1 lab=gnd}
+C {devices/lab_pin.sym} 450 60 2 0 {name=lXRS_1 lab=gnd}
 C {gf180mcu_fd_pr/cap_mim_2f0fF.sym} 220 -120 0 0 {name=C1
 W=22u
 L=22u
@@ -68,7 +68,7 @@ spiceprefix=X
 m=1}
 C {gf180mcu_fd_pr/ppolyf_u_1k.sym} 560 -90 2 0 {name=R1
 W=2u
-L=rs_l
+L=rp_l
 model=ppolyf_u_1k
 spiceprefix=X
 m=1}
@@ -192,3 +192,15 @@ spiceprefix=X
 }
 C {lab_wire.sym} 470 -310 0 0 {name=p15 sig_type=std_logic lab=pg}
 C {lab_wire.sym} 60 -300 2 0 {name=p16 sig_type=std_logic lab=gnd}
+N 580 -90 600 -90 {lab=gnd}
+N 600 -90 600 0 {lab=gnd}
+N 600 0 600 30 {lab=gnd}
+N 580 0 600 0 {lab=gnd}
+C {gf180mcu_fd_pr/nwell.sym} 560 0 2 0 {name=R2
+W=2u
+L=rn_l
+model=nwell
+spiceprefix=X
+m=1}
+C {devices/code_shown.sym} -10 -490 0 0 {name=PARAMS only_toplevel=false
+value=".param rp_l=2.7u rn_l=4.07u"}

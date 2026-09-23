@@ -1,0 +1,6 @@
+* ota5 -- flattened for sch-area-estimator (sizes in um)
+X0 XM1 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X1 XM2 gf180mcu_fd_pr__nfet_06v0 w=20 l=2 nf=1 m=1
+X2 XM3 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X3 XM4 gf180mcu_fd_pr__pfet_06v0 w=40 l=2 nf=1 m=1
+X4 XM5 gf180mcu_fd_pr__nfet_06v0 w=20 l=2 nf=1 m=1
