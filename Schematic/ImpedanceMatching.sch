@@ -34,7 +34,7 @@
   <Port LowImpedance 1 150 240 -23 -50 1 0 "1" 1 "analog" 0>
   <Port HighImpedance 1 410 240 4 -50 0 2 "2" 1 "analog" 0>
   <Port Bias 1 360 360 12 4 0 1 "3" 1 "analog" 0>
-  <L L1 1 360 300 -78 -26 0 3 "20 nH" 1 "" 0>
+  <L L1 1 360 300 -78 -26 0 3 "24 nH" 1 "" 0>
 </Components>
 <Wires>
   <330 240 360 240 "" 0 0 0 "">
