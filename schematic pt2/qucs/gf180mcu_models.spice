@@ -1,0 +1,3 @@
+* GF180MCU-D models for the Qucs-S schematics.  Every GF180 device
+* (SpLib) includes this file; point it at another corner file to switch.
+.include "../../sims/models_typical.spice"
