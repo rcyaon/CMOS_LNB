@@ -1,3 +1,7 @@
 * GF180MCU-D models for the Qucs-S schematics.  Every GF180 device
-* (SpLib) includes this file; point it at another corner file to switch.
-.include "../../sims/models_typical.spice"
+* (SpLib) includes this file; swap the corner sections to switch.
+.include ~/.volare/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib ~/.volare/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+.lib ~/.volare/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_typical
+.lib ~/.volare/gf180mcuD/libs.tech/ngspice/sm141064.ngspice mimcap_typical
+.lib ~/.volare/gf180mcuD/libs.tech/ngspice/sm141064.ngspice cap_mim

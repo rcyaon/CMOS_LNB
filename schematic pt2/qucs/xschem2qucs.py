@@ -3,8 +3,8 @@
 
     python3 qucs/xschem2qucs.py
 
-Reads xschem/*.sch + *.sym (the cells) and spice/tb/xschem/*.sch (the
-testbenches) and writes a Qucs-S project to qucs/bias-other_prj/.  xschem stays
+Reads xschem/*.sch + *.sym (the cells) and sims/tb/*.sch (the
+testbenches) and writes the Qucs-S schematics into qucs/.  xschem stays
 the source of truth: re-run this after changing a schematic.
 
 How things map
@@ -31,7 +31,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PRJ = ROOT / 'qucs' / 'bias-other_prj'
+PRJ = ROOT / 'qucs'
 CELLS = ['inv', 'inv_cs', 'ota5', 'beta_mult', 'vref', 'ringosci']
 QUCS_VERSION = '26.1.1'
 MODELS = 'gf180mcu_models.spice'
@@ -472,14 +472,18 @@ def main():
         write_device_symbol(base, info, PRJ / 'symbols' / f'{base}.sym')
     (PRJ / MODELS).write_text(
         '* GF180MCU-D models for the Qucs-S schematics.  Every GF180 device\n'
-        '* (SpLib) includes this file; point it at another corner file to switch.\n'
-        '.include "../../sims/models_typical.spice"\n')
+        '* (SpLib) includes this file; swap the corner sections to switch.\n'
+        '.include ~/.volare/gf180mcuD/libs.tech/ngspice/design.ngspice\n'
+        '.lib ~/.volare/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical\n'
+        '.lib ~/.volare/gf180mcuD/libs.tech/ngspice/sm141064.ngspice res_typical\n'
+        '.lib ~/.volare/gf180mcuD/libs.tech/ngspice/sm141064.ngspice mimcap_typical\n'
+        '.lib ~/.volare/gf180mcuD/libs.tech/ngspice/sm141064.ngspice cap_mim\n')
 
     cellsyms = {c: CellSym(c) for c in CELLS}
     for c in CELLS:
         sh = convert(ROOT / 'xschem' / f'{c}.sch', c, cellsyms, cellsyms[c])
         sh.write(PRJ / f'{c}.sch', symbol=cellsyms[c].symbol_block())
-    for tb in sorted((ROOT / 'spice' / 'tb' / 'xschem').glob('tb_*.sch')):
+    for tb in sorted((ROOT / 'sims' / 'tb').glob('tb_*.sch')):
         sh = convert(tb, tb.stem, cellsyms)
         sh.write(PRJ / tb.name)
     print(f'wrote {PRJ.relative_to(ROOT)}/')
