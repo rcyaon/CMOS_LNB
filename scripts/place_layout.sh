@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Netlist schematics with Qucs-S and place their devices into Layout/<cell>.gds
-# with scripts/place_instances.py (unrouted, see that file).
+# with scripts/place_instances.py (unrouted, see that file). A cell that has
+# its own scripts/layout_<cell>.py (placed and routed) is drawn by that instead.
 #
 #   scripts/place_layout.sh                 # error amplifier, then LDO
 #   scripts/place_layout.sh "Schematic/LDO/ReferenceMkI.sch"
@@ -49,8 +50,15 @@ for sch in "$@"; do
     (cd "$ROOT" && qucs-s -n --ngspice -i "$sch" -o "$cir") >/dev/null 2>&1 \
         || { echo "place_layout: qucs-s could not netlist $sch" >&2; exit 1; }
     rm -f "$ROOT/Layout/$cell.gds"
-    klayout -zz -r "$ROOT/scripts/place_instances.py" \
-        -rd netlist="$cir" -rd cell="$cell" -rd libdir="$ROOT/Layout" 2>&1 \
-        | grep -v '^##\|^registered KLayout library\|^(' || true
+    if [ -f "$ROOT/scripts/layout_$cell.py" ]; then
+        # Routed cell: its own generator draws the whole layout.
+        klayout -zz -r "$ROOT/scripts/layout_$cell.py" \
+            -rd out="$ROOT/Layout/$cell.gds" 2>&1 \
+            | grep -v '^##\|^registered KLayout library\|^(' || true
+    else
+        klayout -zz -r "$ROOT/scripts/place_instances.py" \
+            -rd netlist="$cir" -rd cell="$cell" -rd libdir="$ROOT/Layout" 2>&1 \
+            | grep -v '^##\|^registered KLayout library\|^(' || true
+    fi
     [ -s "$ROOT/Layout/$cell.gds" ] || { echo "place_layout: $cell failed" >&2; exit 1; }
 done
