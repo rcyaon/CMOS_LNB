@@ -5,7 +5,7 @@ Sim results for the two blocks in `Schematic/References`: a self-biased bias gen
 To redo everything, run this inside the IIC-OSIC-TOOLS container:
 
 ```
-python3 Schematic/References/characterize.py
+python3 scripts/characterize.py
 ```
 
 It runs every `tb_*.sch` bench in this folder through ngspice at all five corners, redraws the plots and dumps the numbers into `characterization_results.json`.  The per-corner numbers live in that JSON; the tables here are just min / typ / max across corners at 5 V and 27 °C.

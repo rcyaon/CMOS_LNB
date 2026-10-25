@@ -1,6 +1,14 @@
+"""Plot Monte Carlo spread (box plot + histogram) per column of an ngspice
+print file into Images/MC_<column>_TT.png.
+
+    python3 scripts/mc_process.py Schematic/LDO/mc_data.csv
+"""
 import sys
+from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
+
+IMAGES = Path(__file__).resolve().parent.parent / 'Images'
 
 file_path = sys.argv[1] if len(sys.argv) > 1 else 'data.txt'
 
@@ -25,5 +33,5 @@ for col in df.columns:
     ax_hist.grid(True, axis='y', linestyle='--', alpha=0.7)
 
     plt.tight_layout()
-    plt.savefig(f'../../Images/MC_{col}_TT.png')
+    plt.savefig(IMAGES / f'MC_{col}_TT.png')
     plt.close(fig)

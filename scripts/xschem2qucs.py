@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """xschem -> Qucs-S converter for the bias-other cells and testbenches.
 
-    python3 qucs/xschem2qucs.py
+    python3 scripts/xschem2qucs.py
 
 Reads xschem/*.sch + *.sym (the cells) and sims/tb/*.sch (the
 testbenches) and writes the Qucs-S schematics into qucs/.  xschem stays

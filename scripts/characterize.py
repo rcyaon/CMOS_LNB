@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Corner characterization of the bias reference and ring oscillator.
 
-Netlists every tb_*.sch in this directory with Qucs-S, runs it in ngspice at
+Netlists every tb_*.sch in Schematic/References with Qucs-S, runs it in ngspice at
 each process corner, and writes
 
   Images/Bias_*.png, Images/Osc_*.png     plots used by Characterization.md
@@ -11,8 +11,8 @@ each process corner, and writes
 
 Usage (inside the IIC-OSIC-TOOLS container, from anywhere):
 
-  python3 Schematic/References/characterize.py
-  python3 Schematic/References/characterize.py --only tb_vref_temp
+  python3 scripts/characterize.py
+  python3 scripts/characterize.py --only tb_vref_temp
 
 Corners: SS and FF skew the FETs, resistors and MIM caps together; SF and FS
 skew the FETs only.  Die-to-die FET spread is also sampled by the Monte Carlo
@@ -34,8 +34,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-HERE = pathlib.Path(__file__).resolve().parent
-ROOT = HERE.parent.parent
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+HERE = ROOT / "Schematic" / "References"   # the benches live here
 IMAGES = ROOT / "Images"
 
 # name -> (FET section, resistor section, MIM section)
