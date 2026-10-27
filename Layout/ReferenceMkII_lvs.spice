@@ -1,0 +1,18 @@
+* ReferenceMkII: 1.7 V bias LDO (one LDOMkI + divider + feed-forward cap + tail diode)
+* Same devices/values as the 1V7 branch of Schematic/LDO/ReferenceMkI.sch.
+.subckt ReferenceMkII VDD VSS BandGap TBias Out
+* ErrorAmplifierNMOSMkI
+MX1 mn mn VDD VDD pfet_06v0 W=10u L=4u
+MX2 G mn VDD VDD pfet_06v0 W=10u L=4u
+MX3 G BandGap tail VSS nfet_06v0 W=10u L=4u
+MX4 tail TBias VSS VSS nfet_06v0 W=10u L=4u
+MX5 mn FB tail VSS nfet_06v0 W=10u L=4u
+* LDOMkI pass device
+MP Out G VDD VDD pfet_06v0 W=80u L=10u
+* tail bias diode (X2 in ReferenceMkI)
+MXB TBias TBias VSS VSS nfet_06v0 W=10u L=4u
+* divider and feed-forward cap
+RR5 Out FB VSS ppolyf_u_1k W=1u L=10u
+RR7 FB VSS VSS ppolyf_u_1k W=1u L=24u
+CC2 Out FB cap_mim_2f0fF W=11u L=22u
+.ends

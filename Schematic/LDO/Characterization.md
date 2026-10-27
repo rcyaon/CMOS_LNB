@@ -108,3 +108,52 @@ A 3000 run Monte Carlo simulation was performed using the typical transistor cor
 ### 2.5 V Reference
 
 ![Monte Carlo](/Images/MC_out_2v5_TT.png)
+
+
+
+# 1.7 V LDO (ReferenceMkII)
+
+*Schematic: Schematic/LDO/ReferenceMkII.sch · Layout: Layout/ReferenceMkII.gds*
+
+1.7 V branch of ReferenceMkI: error amp, pass FET, divider, MIM cap and tail diode. Size: **75 × 30.6 µm**.
+
+![Layout](/Images/ReferenceMkII_Layout.png)
+
+Pins: VDD, VSS, Out (1.7 V), BandGap (1.2 V), TBias (sink 10 µA).
+
+## Checks
+
+| Check | Result |
+| --- | --- |
+| DRC (KLayout) | Pass (density rules are chip-level) |
+| DRC (Magic) | Pass |
+| LVS (KLayout, netgen) | Pass |
+| PEX (Magic) | Done |
+| Ampacity (125 °C) | Pass |
+
+## Results (post-layout)
+
+| Parameter | Value |
+| --- | --- |
+| Vout | 1.703 V |
+| Quiescent current | 68 µA |
+| Phase margin | ≥ 53° |
+| PSRR (1 kHz) | −75 dB |
+| Temp drift (−25 to 125 °C) | ~5 mV |
+| Max load (1 % drop) | 165 µA |
+| Start-up | < 280 ns |
+
+Note: low load-current capability and no output cap, so this is for gate bias only.
+
+## Plots
+
+![Supply](/Images/ReferenceMkII_Supply.png)
+![Temperature](/Images/ReferenceMkII_Temperature.png)
+![Load](/Images/ReferenceMkII_Load.png)
+![Loop](/Images/ReferenceMkII_Loop.png)
+![PSRR](/Images/ReferenceMkII_PSRR.png)
+![Startup](/Images/ReferenceMkII_Startup.png)
+
+## DUALGATE
+
+DUALGATE marks thick (6 V) gate oxide, not dual-gate transistors. All 6 V devices need it.
